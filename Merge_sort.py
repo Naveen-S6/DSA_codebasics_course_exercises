@@ -1,52 +1,51 @@
 def merge_sort(arr):
     if len(arr) <= 1:
-        return arr
-
+        return
     mid = len(arr)//2
     left = arr[:mid]
     right = arr[mid:]
 
-    sort_right = merge_sort(left)
-    sort_left = merge_sort(right)
+    merge_sort(left)
+    merge_sort(right)
 
-    return merge_two_sorted_array(sort_left,sort_right)
+    merge_two_sorted_array(left, right, arr)
 
-def merge_two_sorted_array(a,b):
-    sorted_arr = []
+
+def merge_two_sorted_array(a,b,arr):
     len_a = len(a)
     len_b = len(b)
-    i = j = 0
+    i = j = k = 0
 
     while i < len_a and j < len_b:
         if a[i] <= b[j]:
-            sorted_arr.append(a[i])
+            arr[k] = a[i]
             i += 1
         else:
-            sorted_arr.append(b[j])
+            arr[k] = b[j]
             j += 1
+        k += 1
 
     while i < len_a:
-        sorted_arr.append(a[i])
+        arr[k] = a[i]
         i += 1
-
+        k += 1
     while j < len_b:
-        sorted_arr.append(b[j])
+        arr[k] = b[j]
         j += 1
-
-    return sorted_arr
+        k += 1
 
 
 if __name__ == "__main__":
-    arr = [2,5,64,1,26,4,75,33,65,22,6,23,76,32,200]
+    ar = [[2,5,64,1,26,4,75,33,65,22,6,23,76,32,200],
+           [1,2,34,5],
+           [],
+           [90,88,45,32,21,1],
+           [30,20,302,3]]
     #arr = merge_two_sorted_array(arr1, arr2)
-    n = merge_sort(arr)
 
-
-
-
-
-
-    print(n)
+    for arr in ar:
+        merge_sort(arr)
+        print(arr)
 
 
 
