@@ -40,6 +40,12 @@ if __name__ == "__main__":
     arr = [2,5,64,1,26,4,75,33,65,22,6,23,76,32,200]
     #arr = merge_two_sorted_array(arr1, arr2)
     n = merge_sort(arr)
+
+
+
+
+
+
     print(n)
 
 
